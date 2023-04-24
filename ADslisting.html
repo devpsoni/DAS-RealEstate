@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Abril Fatface' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Khula">
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/slisting.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/8e985a096f.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <title>Document</title>
+</head>
+<body>
+    <!--NAV BAR-->
+     <nav class="navbar sticky-top navbar-expand-lg navbar-light p-2 px-3" style="background-image: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(255, 255, 255))">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DAS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link mx-2"  href="#">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  active mx-2" aria-current="page" href="#">Properties</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="#">Clients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="#">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="listingCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/slist_livinrm.png" class="d-block w-100 listing-carousel" alt="Listing Photo 1">
+              </div>
+              <div class="carousel-item">
+                <img src="images/slist_balcony.png" class="d-block w-100 listing-carousel" alt="Listing Photo 2">
+              </div>
+              <div class="carousel-item">
+                <img src="images/slist_bthrm.png" class="d-block w-100 listing-carousel" alt="Listing Photo 3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#listingCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#listingCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="listing-details">
+            <h1>Spacious 2-Bedroom Condo in Downtown</h1>
+            <p><strong>Address:</strong> 123 Main St, Downtown</p>
+            <p><strong>Price:</strong> $500,000</p>
+            <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada ante non mi euismod lacinia. Nullam mollis lorem non sem faucibus suscipit. Integer varius, velit sit amet ultrices fermentum, elit elit molestie magna, a lacinia elit nisi nec ex.</p>
+            <hr>
+            <button type="submit" class="btn btn-primary mt-3 p-3">
+                <i class="fa-solid fa-pen-to-square fa" style="color: #ffffff;"></i>
+                Edit listing
+            </button>
+      </div>
+    </div>
+    <div class="col-lg-4 mt-5">
+      <div class="agent-details">
+        <h3>Contact Agent</h3>
+        <p><strong>Agent Name:</strong> John Doe</p>
+        <p><strong>Office:</strong> ABC Realty</p>
+        <p><strong>Email:</strong> johndoe@abcrealty.com</p>
+        <p><strong>Phone:</strong> (123) 456-7890</p>
+        <hr>
+        <p>Interested in this listing? Contact the agent above to schedule a showing or to get more information.</p>
+      </div>
+    </div>
+  </div>
+  
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>&copy; 2023 Real Estate Website</p>
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+              <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+              <li class="list-inline-item"><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
