@@ -1,0 +1,26 @@
+html, body {
+    height: 100%;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+    }
+  .container {
+    min-height: 100%;
+  }
+  
+  .sidebar {
+    height: 100% !important;
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .brandName{
+    font-family: "Abril Fatface";
+    font-size: 2.5em !important;
+    color: #0077CE !important;
+}
