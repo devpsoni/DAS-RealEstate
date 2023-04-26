@@ -43,12 +43,12 @@
       
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
       
-                      <form class="mx-1 mx-md-4" name="signUpForm" onsubmit="return validateForm()">
+                      <form action="signup.php" method="post" class="mx-1 mx-md-4" name="signUpForm" onsubmit="return validateForm()">
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="name" class="form-control" required/>
+                            <input type="text" id="name" class="form-control" name="u_name" required/>
                             <label class="form-label" for="name">Your Name</label>
                           </div>
                         </div>
@@ -56,7 +56,7 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="email" class="form-control" required/>
+                            <input type="email" id="email" name="u_email" class="form-control" required/>
                             <label class="form-label" for="email">Your Email</label>
                           </div>
                         </div>
@@ -64,7 +64,7 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="password" class="form-control" required/>
+                            <input type="password" id="password" name="u_password" class="form-control" required/>
                             <label class="form-label" for="password">Password</label>
                           </div>
                         </div>
@@ -84,11 +84,11 @@
                               Sign up as:
                             </label>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radBuy" value="option1">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radBuy" value="Buyer">
                               <label class="form-check-label" for="inlineRadio1">Buyer</label>
                             </div>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radAgent" value="option2">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radAgent" value="Agent">
                               <label class="form-check-label" for="inlineRadio2">Agent</label>
                             </div>
                           </div>
@@ -102,7 +102,7 @@
                         </div>
       
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button type="submit" value="Submit" class="btn btn-primary btn-lg" >Register</button>
+                          <button type="submit" value="Submit" name="submit" class="btn btn-primary btn-lg" >Register</button>
                         </div>
                       </form>
                       <script>
