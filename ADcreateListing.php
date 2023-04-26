@@ -54,8 +54,12 @@
     <form method="POST" enctype="multipart/form-data">
         <div class="row mb-3">
             <?php
+
+            session_start(); // Start the session
+
             if(isset($_POST['submit']))
             {
+                $a_user = $_SESSION['user']['email'];
                 $listing_title = $_POST["listingTitle"];
                 $listing_description = $_POST["listingDescription"];
                 $listing_price = $_POST["listingPrice"];
@@ -88,13 +92,14 @@
                 }
             
                 // Prepare the SQL statement with placeholders for values
-                $sql = "INSERT INTO listings (listing_title, listing_description, listing_price, listing_address, listing_city, listing_state, listing_zipcode, listing_image, listing_imgname, listing_imgsize, listing_imgtype, listing_type, listing_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "INSERT INTO listing (listing_title, listing_description, listing_price, listing_address, listing_city, listing_state, listing_zipcode, listing_image, listing_imgname, listing_imgsize, listing_imgtype, listing_type, listing_date, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
             
                 // Create a prepared statement object
                 $stmt = mysqli_prepare($conn, $sql);
             
                 // Bind parameters to the statement
-                mysqli_stmt_bind_param($stmt, "sssssssssisss", $listing_title, $listing_description, $listing_price, $listing_address, $listing_city, $listing_state, $listing_zipcode, $listing_image, $listing_imgname, $listing_imgsize, $listing_imgtype, $listing_type, $listing_date);
+                mysqli_stmt_bind_param($stmt, "sssssssssissss", $listing_title, $listing_description, $listing_price, $listing_address, $listing_city, $listing_state, $listing_zipcode, $listing_image, $listing_imgname, $listing_imgsize, $listing_imgtype, $listing_type, $listing_date, $a_user);
             
                 // Execute the prepared statement
                 if(mysqli_stmt_execute($stmt)){
