@@ -36,13 +36,13 @@
                 <a class="nav-link mx-2"  href="ADagentDashboard.html">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link  active mx-2" aria-current="page" href="ADproperties.html">Properties</a>
+                <a class="nav-link  active mx-2" aria-current="page" href="ADproperties.php">Properties</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link mx-2" href="ADclients.html">Clients</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link mx-2" href="#">Logout</a>
+                <a class="nav-link mx-2" href="logout.php">Logout</a>
               </li>
             </ul>
           </div>
@@ -53,66 +53,70 @@
     <h1 class="text-center my-5">Create a New Listing</h1>
     <form method="POST" enctype="multipart/form-data">
         <div class="row mb-3">
-            <?php
+        <?php
 
-            session_start(); // Start the session
+          session_start(); // Start the session
 
-            if(isset($_POST['submit']))
-            {
-                $a_user = $_SESSION['user']['email'];
-                $listing_title = $_POST["listingTitle"];
-                $listing_description = $_POST["listingDescription"];
-                $listing_price = $_POST["listingPrice"];
-                $listing_address = $_POST["listingAddress"];
-                $listing_city = $_POST["listingCity"];
-                $listing_state = $_POST["listingState"];
-                $listing_zipcode = $_POST["listingZipcode"];
-                $listing_type = $_POST['inlineRadioOptions'];
-                $listing_date = $_POST['date'];
-            
-                // Get the uploaded file information
-                $listing_imgname = $_FILES['listingImage']['name'];
-                $fileTmpName = $_FILES['listingImage']['tmp_name'];
-                $listing_imgsize = $_FILES['listingImage']['size'];
-                $listing_imgtype = $_FILES['listingImage']['type'];
-            
-                // Open the file for reading
-                $fileHandle = fopen($fileTmpName, 'r');
-                $listing_image = fread($fileHandle, $listing_imgsize);
-                fclose($fileHandle);
-            
-                //Connnect to the database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "mini";
-                $conn = mysqli_connect($servername,$username,$password,$dbname);
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-            
-                // Prepare the SQL statement with placeholders for values
-                $sql = "INSERT INTO listing (listing_title, listing_description, listing_price, listing_address, listing_city, listing_state, listing_zipcode, listing_image, listing_imgname, listing_imgsize, listing_imgtype, listing_type, listing_date, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          if(isset($_POST['submit']))
+          {
+              $a_user = $_SESSION['user']['email'];
+              $listing_title = $_POST["listingTitle"];
+              $listing_description = $_POST["listingDescription"];
+              $listing_price = $_POST["listingPrice"];
+              $listing_address = $_POST["listingAddress"];
+              $listing_city = $_POST["listingCity"];
+              $listing_state = $_POST["listingState"];
+              $listing_zipcode = $_POST["listingZipcode"];
+              $listing_type = $_POST['inlineRadioOptions'];
+              $listing_date = $_POST['date'];
 
-            
-                // Create a prepared statement object
-                $stmt = mysqli_prepare($conn, $sql);
-            
-                // Bind parameters to the statement
-                mysqli_stmt_bind_param($stmt, "sssssssssissss", $listing_title, $listing_description, $listing_price, $listing_address, $listing_city, $listing_state, $listing_zipcode, $listing_image, $listing_imgname, $listing_imgsize, $listing_imgtype, $listing_type, $listing_date, $a_user);
-            
-                // Execute the prepared statement
-                if(mysqli_stmt_execute($stmt)){
-                    echo "<script>alert('Data Inserted');</script>";
-                }else{
+              // Get the uploaded file information
+              $listing_imgname = $_FILES['listingImage']['name'];
+              $fileTmpName = $_FILES['listingImage']['tmp_name'];
+              $listing_imgsize = $_FILES['listingImage']['size'];
+              $listing_imgtype = $_FILES['listingImage']['type'];
+
+              // Open the file for reading
+              $fileHandle = fopen($fileTmpName, 'r');
+              $listing_image = fread($fileHandle, $listing_imgsize);
+              fclose($fileHandle);
+
+              //Connnect to the database
+              $servername = "localhost";
+              $username = "root";
+              $password = "";
+              $dbname = "mini";
+              $conn = mysqli_connect($servername,$username,$password,$dbname);
+              if (!$conn) {
+                  die("Connection failed: " . mysqli_connect_error());
+              }
+
+              // Prepare the SQL statement with placeholders for values
+              $sql = "INSERT INTO listing (listing_title, listing_description, listing_price, listing_address, listing_city, listing_state, listing_zipcode, listing_image, listing_imgname, listing_imgsize, listing_imgtype, listing_type, listing_date, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+              // Create a prepared statement object
+              $stmt = mysqli_prepare($conn, $sql);
+
+              // Bind parameters to the statement
+              mysqli_stmt_bind_param($stmt, "sssssssssissss", $listing_title, $listing_description, $listing_price, $listing_address, $listing_city, $listing_state, $listing_zipcode, $listing_image, $listing_imgname, $listing_imgsize, $listing_imgtype, $listing_type, $listing_date, $a_user);
+
+              // Execute the prepared statement
+              if(mysqli_stmt_execute($stmt)){
+                  mysqli_stmt_close($stmt);
+                  mysqli_close($conn);
+                  header('Location: ADproperties.php');
+                  exit;
+              }else{
                   echo "<script>alert('Error in inserting data: " . mysqli_error($conn) . "');</script>";
-                }
-            
-                // Close the statement and database connection
-                mysqli_stmt_close($stmt);
-                mysqli_close($conn);
-            }            
-            ?>
+              }
+
+              // Close the statement and database connection
+              mysqli_stmt_close($stmt);
+              mysqli_close($conn);
+          }            
+        ?>
+
             <label for="listingTitle" class="col-sm-2 col-form-label">Listing Title</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="listingTitle" name="listingTitle" required minlength="5" maxlength="50">
